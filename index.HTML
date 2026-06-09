@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BR Barber Studio</title>
+    <!-- Importación de fuentes tipográficas elegantes desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Paleta de Colores: Blanco, Gris y Negro (Elegancia Minimalista) */
+        :root {
+            --bg-oscuro: #0a0a0a;       
+            --bg-claro: #ffffff;        
+            --bg-gris-suave: #f8f8f8;   
+            --texto-oscuro: #111111;    
+            --texto-mutado: #777777;    
+            --borde-gris: #e5e5e5;      
+            --blanco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-gris-suave);
+            color: var(--texto-oscuro);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            letter-spacing: 0.8px;
+        }
+
+        /* Contenedor del LOGO */
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 50%; /* Opcional: Hace el logo circular si es necesario */
+        }
+
+        /* Encabezado / Hero Section */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.95)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            color: var(--blanco);
+            text-align: center;
+            padding: 100px 20px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 1rem;
+            font-weight: 200;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            color: #bbb;
+            line-height: 1.9;
+            font-style: italic;
+        }
+
+        /* Botón de Citas */
+        .btn-cita {
+            display: inline-block;
+            background-color: var(--blanco);
+            color: var(--bg-oscuro);
+            padding: 16px 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border: 1px solid var(--blanco);
+        }
+
+        .btn-cita:hover {
+            background-color: transparent;
+            color: var(--blanco);
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 90px 20px;
+        }
+
+        /* Secciones */
+        section {
+            margin-bottom: 50px;
+            background: var(--bg-claro);
+            padding: 55px;
+            border: 1px solid var(--borde-gris);
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--texto-oscuro);
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 1px;
+            background-color: var(--texto-oscuro);
+        }
+
+        /* Barberos */
+        .barberos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .barbero-card {
+            border: 1px solid var(--borde-gris);
+            background: var(--bg-claro);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .barbero-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--texto-oscuro);
+        }
+
+        /* Contenedor de la foto del barbero */
+        .barbero-img-container {
+            width: 100%;
+            height: 450px; 
+            background-color: var(--bg-gris-suave);
+            overflow: hidden;
+            border: 1px solid var(--borde-gris);
+        }
+
+        .barbero-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Recorta y centra la imagen elegantemente */
+            display: block;
+        }
+
+        /* Distribución Horarios y Ubicación */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid, .barberos-grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+            .barbero-img-container {
+                height: 380px;
+            }
+        }
+
+        /* Tabla de Horarios */
+        .horario-tabla {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .horario-tabla td {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--borde-gris);
+            font-size: 0.95rem;
+        }
+
+        .horario-tabla td:last-child {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .cerrado {
+            color: var(--texto-mutado);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .ubicacion-texto strong {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--bg-oscuro);
+            color: #777;
+            text-align: center;
+            padding: 70px 20px;
+            font-size: 0.85rem;
+        }
+
+        footer strong {
+            color: var(--blanco);
+            font-weight: 400;
+        }
+
+        footer a {
+            color: var(--blanco);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border 0.3s ease;
+        }
+
+        footer a:hover {
+            border-bottom: 1px solid var(--blanco);
+        }
+
+        .footer-citas {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .social-links {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #151515;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado / Misión -->
+    <header>
+        <!-- Logotipo de la Barbería -->
+        <div class="logo-container">
+            <img src="https://i.imgur.com/PWMlUTH.jpeg" alt="Logo BR Barber Studio">
+        </div>
+
+        <h1>BR Barber Studio</h1>
+        <p>“Somos una barbería donde nuestra misión va más allá de solo hacer un buen corte, es darte una experiencia donde sientas que el centro de atención eres tú.”</p>
+        <a href="https://wa.me/523881020915" class="btn-cita" target="_blank">Agendar Cita</a>
+    </header>
+
+    <div class="container">
+
+        <!-- Sección de Barberos -->
+        <section id="barberos">
+            <h2>Nuestros Barberos</h2>
+            <div class="barberos-grid">
+                
+                <!-- Barbero 1: Oscar Ocampo -->
+                <div class="barbero-card">
+                    <h3>Oscar Ocampo</h3>
+                    <div class="barbero-img-container">
+                        <img src="https://i.imgur.com/sUpbfvb.jpeg" alt="Oscar Ocampo">
+                    </div>
+                </div>
+
+                <!-- Barbero 2: Brian Palomera -->
+                <div class="barbero-card">
+                    <h3>Brian Palomera</h3>
+                    <div class="barbero-img-container">
+                        <img src="https://i.imgur.com/RZ2QxCA.jpeg" alt="Brian Palomera">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Sección de Horarios e Instalaciones -->
+        <div class="info-grid">
+            
+            <!-- Horarios -->
+            <section id="horarios">
+                <h2>Horario</h2>
+                <table class="horario-tabla">
+                    <tr>
+                        <td>Lunes a Sábado</td>
+                        <td>Solo con cita</td>
+                    </tr>
+                    <tr>
+                        <td>Domingo</td>
+                        <td class="cerrado">Cerrado</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Ubicación -->
+            <section id="ubicacion">
+                <h2>Ubicación</h2>
+                <div class="ubicacion-texto">
+                    <p>Visítanos en el estudio:</p>
+                    <p><strong>Calle Benito Juárez 1B</strong></p>
+                    <p style="color: var(--texto-mutado); font-size: 0.8rem; margin-top: 20px;">* Exclusivo mediante reserva previa.</p>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p class="footer-citas">Citas: <strong>388 102 0915</strong></p>
+        <p>&copy; 2026 BR Barber Studio. Todos los derechos reservados.</p>
+        <div class="social-links">
+            <p>Instagram: <a href="https://www.instagram.com/" target="_blank">@BR_BarberStudio</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
